@@ -1,0 +1,179 @@
+$menu: #35524A;
+$body: #92c7bf;
+$primary: #779CAB;
+$primary-dark: #627C85;
+
+body{
+    width:100%;
+    height:auto;
+    min-height:60em;
+    background-color:$body;
+    margin:0;
+    padding:0;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+header{
+    position:fixed;
+    width: 100%;
+    height: 6em;
+    margin-bottom: 1em;
+    background-color: $menu;
+}
+
+nav{
+    display:table;
+    width:100%;
+    margin-left:auto; 
+    margin-right:auto;
+    padding-top: 0.6em;
+    border-spacing: 0.8em;
+
+    .button{
+        width:20%;
+        display:table-cell;
+        text-align:center;
+        vertical-align:middle;
+        border-radius: 0.4em;
+
+        a {
+            display:block;
+            width:100%;
+            line-height:3.4em;
+            font-weight:bold;
+            text-decoration: none;
+            color: white ;
+        }
+    }
+
+    .unactive {
+        background-color: $primary;
+        cursor: Pointer;
+    }
+
+    .active, .button:hover{
+        background-color: $primary-dark;
+    }
+}
+
+#content{
+    padding-top:7em;
+    padding-bottom:1em;
+    margin-left:auto; 
+    margin-right:auto;
+    text-align:center;
+}
+
+#animation, #separator {
+
+    .button{
+        display:block;
+        padding-top:1em;
+        padding-bottom:1em;
+        margin:1.4em;
+        width:60%;
+        max-width: 20em;
+        line-height:2em;
+        text-align:center;
+        vertical-align:middle;
+        font-weight:bold;
+        color: white;
+        margin-left:auto; 
+        margin-right:auto;
+        border-radius: 0.4em;
+    }
+
+    .unactive {
+        background-color:$primary;
+        cursor: Pointer;
+    }
+
+    .active, .button:hover {
+        background-color:$primary-dark ;
+    }
+}
+
+#brightness, #color{
+    display: table;
+    width: 95%;
+    max-width: 24em;
+    margin-top:1em;
+    margin-left:auto; 
+    margin-right:auto;
+    border-spacing: 0.8em;
+
+    .divTableBody {
+        display: table-row-group;
+    }
+
+    .divTableRow {
+        display: table-row;
+    }
+
+    .divTableCell {
+        display: table-cell;
+        width:7em;
+        height:7em;
+        border-radius: 0.4em;
+        vertical-align:middle;
+        cursor: Pointer;
+    }
+}
+
+#info {
+
+    .button{
+        display:block;
+        padding-top:1em;
+        padding-bottom:1em;
+        margin:1.4em;
+        width:40%;
+        max-width: 20em;
+        line-height:1.2em;
+        text-align:center;
+        vertical-align:middle;
+        font-weight:bold;
+        color: white;
+        margin-left:auto; 
+        margin-right:auto;
+        border-radius: 0.4em;
+        background-color:$primary;
+        cursor: Pointer;
+    }
+
+    .info {
+        width: 80%;
+        text-align:left;
+        margin-top: 2em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/*
+ * Responsive design for desktop, default for mobile device
+ */
+@media only screen and (min-width : 800px) {
+    html{
+        background-color: dimgray;
+    }
+    body {
+        width:26em;
+        border-radius:1em;
+        margin-top:2em;
+        margin-bottom:2em;
+    }
+    header{
+        height: 8em;
+        width:100%;
+        position:relative;
+        border-radius: 1em 1em 0 0;
+    }
+    #content{
+        padding-top:1em;
+    }
+    nav{
+        padding-top: 2em;
+    }
+}
