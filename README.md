@@ -14,7 +14,7 @@ The libs you will need to install on the ArduinoIDE are :</br>
 ## Screenshots
 
 <p align="center">
-  <img src="ClockPanel.jpg"/>
+  <img src="ClockPanel.jpeg"/>
 </p>
 
 ## Links
