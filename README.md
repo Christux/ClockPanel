@@ -3,15 +3,19 @@ Copyright (C) 2020 Christux
 
 ## Summary
 
-Firmware of RGB clock panel.
+Firmware of RGB clock panel (see below).
 
 ## Installation
 
-The libs you need on the ArduinoIDE are :</br>
+The libs you will need to install on the ArduinoIDE are :</br>
 <a href="https://github.com/Christux/ChristuxUtils">https://github.com/Christux/ChristuxUtils</a></br>
 <a href="https://github.com/Christux/ChristuxAnimation">https://github.com/Christux/ChristuxAnimation</a>
 
 ## Screenshots
+
+<p align="center">
+  <img src="ClockPanel.jpg"/>
+</p>
 
 ## Links
 
@@ -20,7 +24,8 @@ The libs you need on the ArduinoIDE are :</br>
 <a href="https://github.com/bblanchon/ArduinoJson">https://github.com/bblanchon/ArduinoJson</a></br>
 <a href="https://github.com/Makuna/NeoPixelBus">https://github.com/Makuna/NeoPixelBus</a>
 <a href="https://github.com/PaulStoffregen/Time">https://github.com/PaulStoffregen/Time</a>
+<a href="https://github.com/tzapu/WiFiManager">https://github.com/tzapu/WiFiManager</a>
 
 ## Keywords
 
-ArduinoIDE, NodeMCU, ESP8266, ESP8266WiFi, ESP8266WebServer, ESP8266mDNS, NeoPixelBus, NTP, TimeLib, ChristuxUtils, ChristuxAnimation, ArduinoJson, JavaScript
+Arduino IDE, NodeMCU, ESP8266, ESP8266WiFi, ESP8266WebServer, ESP8266mDNS, NeoPixelBus, NTP, TimeLib, ChristuxUtils, ChristuxAnimation, ArduinoJson, WiFiManager, JavaScript
