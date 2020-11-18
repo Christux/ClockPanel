@@ -22,8 +22,8 @@ The libs you will need to install on the ArduinoIDE are :</br>
 <a href="https://www.arduino.cc">https://www.arduino.cc/</a></br>
 <a href="https://github.com/esp8266/Arduino">https://github.com/esp8266/Arduino</a></br>
 <a href="https://github.com/bblanchon/ArduinoJson">https://github.com/bblanchon/ArduinoJson</a></br>
-<a href="https://github.com/Makuna/NeoPixelBus">https://github.com/Makuna/NeoPixelBus</a>
-<a href="https://github.com/PaulStoffregen/Time">https://github.com/PaulStoffregen/Time</a>
+<a href="https://github.com/Makuna/NeoPixelBus">https://github.com/Makuna/NeoPixelBus</a></br>
+<a href="https://github.com/PaulStoffregen/Time">https://github.com/PaulStoffregen/Time</a></br>
 <a href="https://github.com/tzapu/WiFiManager">https://github.com/tzapu/WiFiManager</a>
 
 ## Keywords
