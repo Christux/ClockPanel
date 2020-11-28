@@ -72,6 +72,9 @@ void animationSetup()
   {
     separatorId = 0;
   }
+
+  bool mirror = config.readMirror();
+  clockPanel.setMirror(mirror);
   
   clockPanelAnimator.setAnimation(animId);
   clockPanelAnimator.setSeparatorAnimation(separatorId);

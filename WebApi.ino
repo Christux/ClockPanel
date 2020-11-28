@@ -46,6 +46,15 @@ int setConfig(String data)
       else return -1;
     }
 
+    JsonVariant mirror = root["mirror"];
+    if (mirror.success()) 
+    {
+        int anim = root["mirror"].as<bool>();
+        config.saveMirror(anim);
+        clockPanel.setMirror(anim);
+    }
+    else return -1;
+
     JsonVariant color = root["color"];
     if (color.success())
     {
@@ -85,6 +94,7 @@ void getConfig(char* buffer, int bufferSize)
 {
   int animation = clockPanelAnimator.getAnimation();
   int separator = clockPanelAnimator.getSeparatorAnimation();
+  bool mirror = clockPanel.getMirror();
   ChristuxAnimation::RgbColor rgb = clockPanelAnimator.getColor();
   
   // Init Json buffer
@@ -94,6 +104,7 @@ void getConfig(char* buffer, int bufferSize)
 
   root["animation"] = animation;
   root["separator"] = separator;
+  root["mirror"] = mirror;
   color["red"] = rgb.R;
   color["green"] = rgb.G;
   color["blue"] = rgb.B;

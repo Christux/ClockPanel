@@ -280,6 +280,59 @@ export default bambo.module('navigate', ['$location', '$scroll', ($location, $sc
   })
 
   /*
+  * Mirror module
+  */
+  .module('mirror', () => {
+
+    let node;
+    let button;
+    let mirror = false;
+
+    return {
+      $init: ['observer', function (observer) {
+        node = document.getElementById('mirror');
+
+        observer.registerHandler(function (data) {
+          update(data.mirror);
+        });
+      }],
+      $build: ['model', function (model) {
+        build(model);
+      }]
+    };
+
+    //-------------------------------------------------------------
+    function build(model) {
+
+      button = document.createElement('div');
+      button.innerText = 'Mirror';
+      button.className = 'button unactive';
+      button.onclick = function () {
+        changeMode(model, !mirror);
+      };
+
+      node.appendChild(button);
+    }
+
+    function changeMode(model, newMode) {
+      model.send({
+        mirror: newMode
+      });
+    }
+
+    function update(_mirror) {
+      mirror = _mirror;
+
+      if (mirror) {
+        button.className = "button active";
+      }
+      else {
+        button.className = "button unactive";
+      }
+    }
+  })
+
+  /*
   * Brightness module
   */
   .module('brightness', () => {

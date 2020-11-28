@@ -10,7 +10,8 @@ remote.module('fakeServer', ['$httpInterpector', ($httpInterpector) => {
 			blue: 43
 		},
 		animation: 4,
-		separator: 0
+		separator: 0,
+		mirror: false
 	};
 
 	const updateState = (newState) => {
@@ -25,6 +26,10 @@ remote.module('fakeServer', ['$httpInterpector', ($httpInterpector) => {
 
 		if (newState.hasOwnProperty('separator')) {
 			state.separator = newState.separator;
+		}
+
+		if (newState.hasOwnProperty('mirror')) {
+			state.mirror = newState.mirror;
 		}
 	};
 
