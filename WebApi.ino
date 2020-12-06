@@ -53,7 +53,6 @@ int setConfig(String data)
         config.saveMirror(anim);
         clockPanel.setMirror(anim);
     }
-    else return -1;
 
     JsonVariant color = root["color"];
     if (color.success())
