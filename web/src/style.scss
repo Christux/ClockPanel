@@ -121,7 +121,7 @@ nav{
     }
 }
 
-#info {
+#info, #settings {
 
     .button{
         display:block;
@@ -140,8 +140,14 @@ nav{
         border-radius: 0.4em;
         background-color:$primary;
         cursor: Pointer;
-    }
 
+        &:hover{
+            background-color: $primary-dark;
+        }
+    }
+}
+
+#info {
     .info {
         width: 80%;
         text-align:left;

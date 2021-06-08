@@ -14,6 +14,10 @@ remote.module('fakeServer', ['$httpInterpector', ($httpInterpector) => {
 		mirror: false
 	};
 
+	const settings = {
+		timeZone: 1
+	};
+
 	const updateState = (newState) => {
 
 		if (newState.hasOwnProperty('color')) {
@@ -33,11 +37,24 @@ remote.module('fakeServer', ['$httpInterpector', ($httpInterpector) => {
 		}
 	};
 
+	const updateSettings = (newSettings) => {
+		if (newSettings.hasOwnProperty('timeZone')) {
+			settings.timeZone = newSettings.timeZone;
+		}
+	};
+
 	$httpInterpector.add('GET', '/api', () => state);
 	$httpInterpector.add('POST', '/api', (obj) => {
 		updateState(obj);
 		return state;
 	});
+
+	$httpInterpector.add('GET', '/settings', () => settings);
+	$httpInterpector.add('POST', '/settings', obj => {
+		updateSettings(obj);
+		return settings;
+	});
+
 	$httpInterpector.add('GET', '/info', () => ({
 		vendor: "Christux",
 		model: "ClockPanel01",

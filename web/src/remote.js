@@ -655,4 +655,83 @@ export default bambo.module('navigate', ['$location', '$scroll', ($location, $sc
         }
       }
     }
+  }])
+  
+  /*
+  * Settings
+  */
+  .module('settings', ['$http', ($http) => {
+
+    let node, timeZone, prevValue = 0;
+
+    return {
+      $init: function () {
+        node = document.getElementById("settings");
+      },
+      $build: function () {
+        build();
+      }
+    };
+
+    //--------------------------------------------------------------------------
+    function build() {
+
+      const button = node.getElementsByClassName("button")[0];
+      button.onclick = function () {
+        render();
+      };
+    }
+
+    function render() {
+
+      node.innerHTML = "";
+
+      timeZone = document.createElement('select');
+      for(let i = -12; i <= 12; i++) {
+        const option = document.createElement('option');
+        option.innerText = i.toString();
+        timeZone.appendChild(option);
+      }
+
+      const button = document.createElement('div');
+      button.innerText = 'Update settings';
+      button.className = 'button';
+
+      button.onclick = function() {
+        $http.post("/settings", JSON.stringify({
+            timeZone: parseInt(timeZone.value)
+          }))
+          .setTimeout(10000)
+          .success(function (resp) {
+            update(JSON.parse(resp));
+          })
+          .error(function (resp) {
+            console.log(resp);
+          })
+          .timeout(function (resp) {
+            console.log(resp);
+          })
+          .send();
+      };
+
+      node.appendChild(timeZone);
+      node.appendChild(button);
+
+      $http.get("/settings")
+          .setTimeout(10000)
+          .success(function (resp) {
+            update(JSON.parse(resp));
+          })
+          .error(function (resp) {
+            console.log(resp);
+          })
+          .timeout(function (resp) {
+            console.log(resp);
+          })
+          .send();
+    }
+
+    function update(settings) {
+      timeZone.value = settings.timeZone;
+    }
   }]);
