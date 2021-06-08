@@ -30,6 +30,14 @@ void serverSetup() {
     Serial.println(buffer);
     server.send(200, "application/json", buffer);
   };
+
+  const auto sendSettings = []() {
+    char buffer[256];
+    getSettings(buffer, sizeof(buffer));
+    Serial.print("GET: ");
+    Serial.println(buffer);
+    server.send(200, "application/json", buffer);
+  };
   
   server.on("/", HTTP_GET, [&sendHeader](){
     sendHeader();
@@ -68,6 +76,24 @@ void serverSetup() {
 
     if(result == 0) {
       sendConfig();
+    }
+    else {
+      server.send(500, "text/html", "Error");
+    }
+  });
+
+  server.on("/settings", HTTP_GET, sendSettings);
+
+  server.on("/settings", HTTP_POST, [&sendSettings]() {
+
+    String data = server.arg("plain");
+    int result = setSettings(data);
+
+    Serial.print("POST: ");
+    Serial.println(data);
+
+    if(result == 0) {
+      sendSettings();
     }
     else {
       server.send(500, "text/html", "Error");

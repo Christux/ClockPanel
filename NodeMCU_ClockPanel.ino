@@ -41,7 +41,6 @@ const char* proto = "tcp";
 // NTP
 //const char ntpServerName[] = "fr.pool.ntp.org";
 const char ntpServerName[] = "192.168.1.42"; // my Syno
-const int timeZone = 1;     // Central European Time
 
 // LedStrip
 const int pixelPin = 8;

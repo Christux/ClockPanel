@@ -112,6 +112,45 @@ void getConfig(char* buffer, int bufferSize)
   root.printTo(buffer, bufferSize);
 }
 
+int setSettings(String data)
+{
+  StaticJsonBuffer<200> jsonBuffer;
+  JsonObject& root = jsonBuffer.parseObject(data);
+
+  if (root.success())
+  {
+    JsonVariant timeZone = root["timeZone"];
+    if (timeZone.success()) 
+    {
+      int tz = root["timeZone"].as<int>();
+
+      if (tz >= -12 && tz <= 12) {
+        config.saveTimeZone(timeZone);
+
+        // Force to resync
+        setSyncProvider(getNtpTime);
+        now();
+      }
+      else return -1;
+    }
+  }
+  else return -1;
+
+  return 0;
+}
+
+void getSettings(char* buffer, int bufferSize)
+{
+  int timeZone = config.readTimeZone();
+
+  StaticJsonBuffer<200> jsonBuffer;
+  JsonObject& root = jsonBuffer.createObject();
+
+  root["timeZone"] = timeZone;
+
+  root.printTo(buffer, bufferSize);
+}
+
 void getInfo(char* buffer, int bufferSize)
 {
  // Init Json buffer

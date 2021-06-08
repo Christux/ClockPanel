@@ -31,7 +31,7 @@
 struct Config {
 
   void saveColor(ChristuxAnimation::RgbColor col) {
-    EEPROM.begin(6);
+    EEPROM.begin(7);
     EEPROM.write(2, col.R);
     EEPROM.write(3, col.G);
     EEPROM.write(4, col.B);
@@ -41,7 +41,7 @@ struct Config {
 
   void saveMainAnimation(int id)
   {
-    EEPROM.begin(6);
+    EEPROM.begin(7);
     EEPROM.write(0, id);
     EEPROM.commit();
     EEPROM.end();
@@ -49,7 +49,7 @@ struct Config {
 
   void saveSeparatorAnimation(int id)
   {
-    EEPROM.begin(6);
+    EEPROM.begin(7);
     EEPROM.write(1, id);
     EEPROM.commit();
     EEPROM.end();
@@ -57,35 +57,52 @@ struct Config {
 
   void saveMirror(bool mirror)
   {
-    EEPROM.begin(6);
+    EEPROM.begin(7);
     EEPROM.write(5, (int)mirror);
     EEPROM.commit();
     EEPROM.end();
   }
 
+  void saveTimeZone(int timeZone)
+  {
+    EEPROM.begin(7);
+    EEPROM.write(6, timeZone);
+    EEPROM.commit();
+    EEPROM.end();
+  }
+
   int readMainAnimation() {
-    EEPROM.begin(6);
+    EEPROM.begin(7);
     int id = EEPROM.read(0);
     EEPROM.end();
     return id;
   }
 
   int readSeparatorAnimation() {
-    EEPROM.begin(6);
+    EEPROM.begin(7);
     int id = EEPROM.read(1);
     EEPROM.end();
     return id;
   }
 
-  bool readMirror() {
-    EEPROM.begin(6);
+  bool readMirror() 
+  {
+    EEPROM.begin(7);
     int mirror = EEPROM.read(5);
     EEPROM.end();
     return (bool)mirror;
   }
 
+  int readTimeZone() 
+  {
+    EEPROM.begin(7);
+    int timeZone = EEPROM.read(6);
+    EEPROM.end();
+    return timeZone;
+  }
+
   ChristuxAnimation::RgbColor readColor() {
-    EEPROM.begin(6);
+    EEPROM.begin(7);
     ChristuxAnimation::RgbColor color(EEPROM.read(2),
                     EEPROM.read(3),
                     EEPROM.read(4));

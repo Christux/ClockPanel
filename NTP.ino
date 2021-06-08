@@ -7,6 +7,12 @@ byte packetBuffer[NTP_PACKET_SIZE]; //buffer to hold incoming & outgoing packets
 time_t getNtpTime()
 {
   IPAddress ntpServerIP; // NTP server's ip address
+  // Read config from EEPROM
+  int timeZone = config.readTimeZone();
+  if(timeZone < -12 || timeZone > 12)
+  {
+    timeZone = 0;
+  }
 
   while (Udp.parsePacket() > 0) ; // discard any previously received packets
   Serial.println("Transmit NTP Request");
